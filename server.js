@@ -28,6 +28,7 @@ db.connect((err) => {
 
 module.exports = db;
 
+const displayMenu = () => {
 inquirer
   .prompt([
     {
@@ -79,7 +80,7 @@ inquirer
     if (choice === 'Update an employee role') {
       updateEmployeeRole();
     }
-  });
+  })};
 
 addDepartment = () => {
   inquirer
@@ -96,6 +97,7 @@ addDepartment = () => {
       db.query('SELECT * FROM department', (err,rows) => {
         console.table(rows)})
     })
+    displayMenu();
   })};
 
 addRole = () => {
@@ -108,7 +110,6 @@ addRole = () => {
         },
         {
           type: 'input',
-          
           name: 'addRoleSalary',
           message: "What is the salary for this role?"
         },
@@ -119,11 +120,12 @@ addRole = () => {
         }
     ])
     .then(answers => {
-      db.query('INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)', answers.addRoleTile, answers.addRoleSalary, answers.addRoleDepartment, (err, rows)=> {
+      db.query('INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)', [answers.addRoleTile, answers.addRoleSalary, answers.addRoleDepartment], (err, rows)=> {
         console.log('Here is an updated list of roles!');
         db.query('SELECT * FROM role', (err,rows) => {
           console.table(rows)})
       })
+      displayMenu();
     })};
 
 addEmployee = () => {
@@ -156,4 +158,5 @@ addEmployee = () => {
         db.query('SELECT * FROM employee', (err,rows) => {
           console.table(rows)})
       })
+      displayMenu();
 })};

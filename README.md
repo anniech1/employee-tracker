@@ -17,6 +17,8 @@ In order to install this project, first clone this GitHub repo. In an integrated
 
 ## Usage
 This project takes inputs from the user's terminal. The video below illustrates this functionality.
+
+https://watch.screencastify.com/v/mXIVXAn3jk2ccbXBbHDw
                            
 ## Credits 
 Help for this project was sourced from office hours and tutoring sessions.

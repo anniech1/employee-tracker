@@ -18,7 +18,9 @@ In order to install this project, first clone this GitHub repo. In an integrated
 ## Usage
 This project takes inputs from the user's terminal. The video below illustrates this functionality.
 
-https://watch.screencastify.com/v/mXIVXAn3jk2ccbXBbHDw
+[Employee Tracker.webm](https://user-images.githubusercontent.com/107431063/181699250-d09d8eda-3838-4c6d-ba15-e4a934de1dfe.mp4)
+
+
                            
 ## Credits 
 Help for this project was sourced from office hours and tutoring sessions.

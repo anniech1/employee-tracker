@@ -13,7 +13,7 @@ This project is a content mangement system, or CMS. It relies on Node.js, Inquir
 
 
 ## Installation
-In order to install this project, first clone this GitHub repo. In an integrated terminal, run npm init and npm i express and npm i mysql2.
+In order to install this project, first clone this GitHub repo. In an integrated terminal, run npm init and then npm i express mysql2.
 
 ## Usage
 This project takes inputs from the user's terminal. The video below illustrates this functionality.

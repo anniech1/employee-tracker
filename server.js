@@ -60,24 +60,68 @@ inquirer
 
     if (choice === 'View all employees') {
       db.query('SELECT * FROM employee', (err,rows) => {
-        console.log('Here are the employeed!');
+        console.log('Here are the employees!');
         console.table(rows)
     })};
 
-    // if (choices === 'Add a department') {
-     
-    // }});
+    if (choice === 'Add a department') {
+        addDepartment();
+      
+    };
 
-    // if (choices === 'View all employees') {
+    if (choice === 'Add a role') {
+      addRole();
+    };
+
+    if (choice === 'Add an employee') {
+      addEmployee();
+    }});
+   // if (choices === 'Update an employee role') {
       
     // };
 
-    // if (choices === 'View all employees') {
-      
-    // }
-
   // 
-  
-app.listen(PORT, () => {
-    console.log(`server is currently at ${PORT} !`);
-  })})
+
+addDepartment = () => {
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'addDepartment',
+        message: "What is the name of this department?"
+      },
+  ])
+  .then(answer => {
+    db.query('INSERT INTO department (name) VALUES (?)', answer.addDepartment, (err, rows)=> {
+      console.log('Here is an updated list of departments!');
+      db.query('SELECT * FROM department', (err,rows) => {
+        console.table(rows)})
+    })
+  })};
+
+addRole = () => {
+    inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'addRoleTitle',
+          message: "What is the title of this role?"
+        },
+        {
+          type: 'input',
+          name: 'addRoleSalary',
+          message: "What is the salary for this role?"
+        },
+        {
+          type: 'input',
+          name: 'addRoleDepartment',
+          message: "What department is this role part of?"
+        }
+    ])
+    .then(answer => {
+      db.query('INSERT INTO role (title, salary, department_id) VALUES (?)', answer.addRoleTitle, answer.addRoleSalary, answer.addRoleDepartment, (err, rows)=> {
+        console.log('Here is an updated list of roles!');
+        db.query('SELECT * FROM role', (err,rows) => {
+          console.table(rows)})
+      })
+    })};  

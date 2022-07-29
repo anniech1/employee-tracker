@@ -153,7 +153,7 @@ addEmployee = () => {
       }
       ])
     .then(answers => {
-      db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', answers.first_name, answers.last_name, answers.role_id, answers.manager_id, (err, rows)=> {
+      db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [answers.first_name, answers.last_name, answers.role_id, answers.manager_id], (err, rows)=> {
         console.log('Here is an updated list of departments!');
         db.query('SELECT * FROM employee', (err,rows) => {
           console.table(rows)})

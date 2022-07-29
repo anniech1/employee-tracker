@@ -23,7 +23,7 @@ db.connect((err) => {
     console.log('you have not connected to the employees_db database :(');
     return;
   }
-  console.log('you have connected to the employees_db database!');
+  //console.log('you have connected to the employees_db database!');
 });
 
 module.exports = db;
@@ -66,7 +66,6 @@ inquirer
 
     if (choice === 'Add a department') {
         addDepartment();
-      
     };
 
     if (choice === 'Add a role') {
@@ -75,12 +74,12 @@ inquirer
 
     if (choice === 'Add an employee') {
       addEmployee();
-    }});
-   // if (choices === 'Update an employee role') {
-      
-    // };
+    };
 
-  // 
+    if (choice === 'Update an employee role') {
+      updateEmployeeRole();
+    }
+  });
 
 addDepartment = () => {
   inquirer
@@ -109,19 +108,52 @@ addRole = () => {
         },
         {
           type: 'input',
+          
           name: 'addRoleSalary',
           message: "What is the salary for this role?"
         },
         {
           type: 'input',
           name: 'addRoleDepartment',
-          message: "What department is this role part of?"
+          message: "What department is this role part of? Make sure to enter the corresponding number."
         }
     ])
-    .then(answer => {
-      db.query('INSERT INTO role (title, salary, department_id) VALUES (?)', answer.addRoleTitle, answer.addRoleSalary, answer.addRoleDepartment, (err, rows)=> {
+    .then(answers => {
+      db.query('INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)', answers.addRoleTile, answers.addRoleSalary, answers.addRoleDepartment, (err, rows)=> {
         console.log('Here is an updated list of roles!');
         db.query('SELECT * FROM role', (err,rows) => {
           console.table(rows)})
       })
-    })};  
+    })};
+
+addEmployee = () => {
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'first_name',
+        message: "What is this employee's first name?"
+      },
+      {
+        type: 'input',
+        name: 'last_name',
+        message: "What is their last name?"
+      },
+      {
+        type: 'input',
+        name: 'role',
+        message: "What is their role?"
+      },
+      {
+        type: 'input',
+        name: 'manager',
+        message: "Who is their manager? Answer with their id number."
+      }
+      ])
+    .then(answers => {
+      db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', answers.first_name, answers.last_name, answers.role_id, answers.manager_id, (err, rows)=> {
+        console.log('Here is an updated list of departments!');
+        db.query('SELECT * FROM employee', (err,rows) => {
+          console.table(rows)})
+      })
+})};

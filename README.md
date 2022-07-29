@@ -13,10 +13,14 @@ This project is a content mangement system, or CMS. It relies on Node.js, Inquir
 
 
 ## Installation
-In order to install this project, first clone this GitHub repo. In an integrated terminal, run npm init and npm i express and npm i mysql2.
+In order to install this project, first clone this GitHub repo. In an integrated terminal, run npm init and then npm i express mysql2.
 
 ## Usage
 This project takes inputs from the user's terminal. The video below illustrates this functionality.
+
+[Employee Tracker.webm](https://user-images.githubusercontent.com/107431063/181699250-d09d8eda-3838-4c6d-ba15-e4a934de1dfe.mp4)
+
+
                            
 ## Credits 
 Help for this project was sourced from office hours and tutoring sessions.
@@ -35,5 +39,7 @@ To test this project, follow installation instructions.
 
 ## Questions
 To see more projects, visit github.com/anniech1
+
+
 Additional questions can be sent to the following address: annie@example.com                 
     
